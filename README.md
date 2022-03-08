@@ -55,10 +55,10 @@ await addLayer('Characters', character, ctx);
 
 Super rare one offs (Will front-load the rare NFT's to earlier ID's)
 ```javascript
-const arr = ['Human', 'Ape','Punk];
+const arr = ['Human','Ape','Mutant','Punk','Loogie']; // put this array outside of the loop at the top of the script
 const attr = arr[Math.floor(Math.random()*arr.length)];
-if (attr === 'Punk') 
-await addLayer('Backgrounds', attr, ctx);
+if (attr === 'Punk') arr.splice(3,1); // removes Punk at array index 3 (starts at 0) out of the array
+await addLayer('AvatarType', attr, ctx);
 ```
 
 Feel free to add more examples above this line via a pull request.
