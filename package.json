@@ -24,6 +24,7 @@
   "dependencies": {
     "canvas": "^2.9.0",
     "fs": "0.0.1-security",
-    "imagemin": "^8.0.1"
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2"
   }
 }

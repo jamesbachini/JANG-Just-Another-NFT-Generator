@@ -9,7 +9,7 @@ You'll need Node.js installed from https://nodejs.org
 Then open up a terminal/console and clone the directory and install dependencies.
 
 ```
-git clone https://jamesbachini.com/JANG-Just-Another-NFT-Generator/JANG-Just-Another-NFT-Generator.git
+git clone https://github.com/jamesbachini/JANG-Just-Another-NFT-Generator.git
 cd JANG-Just-Another-NFT-Generator/
 npm install
 ```
@@ -75,11 +75,11 @@ You can change the compression settings to make the images higher quality or low
 
 High Quality Larger Size
 ```javascript
-    plugins: [imageminPngquant({quality: [0.6, 0.7]})]
+    plugins: [imageminPngquant({quality: [0.5, 0.7]})]
 ```
 Low Quality Smaller Size
 ```javascript
-    plugins: [imageminPngquant({quality: [0.4, 0.5]})]
+    plugins: [imageminPngquant({quality: [0.3, 0.5]})]
 ```
 More options and spec here: https://github.com/imagemin/imagemin-pngquant#readme
 
