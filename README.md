@@ -75,6 +75,12 @@ const strength = Math.floor(Math.random()*99);
 ctx.attributes.push({ 'trait_type': 'Strength', 'value': strength });
 ```
 
+Add a image layer or filter but no attribute
+```javascript
+const img = await canvas.loadImage(`${dir.input}/vignette.png`);
+ctx.drawImage(img,0,0,imageSize.width,imageSize.height);
+```
+
 Feel free to add more examples above this line via a pull request.
 
 ## Compression

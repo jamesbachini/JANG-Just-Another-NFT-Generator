@@ -51,6 +51,9 @@ const drawImage= async (nftID) => {
   // Add Numeric Attributes With No Image Layers
   const strength = Math.floor(Math.random()*99);
   ctx.attributes.push({ 'trait_type': 'Strength', 'value': strength });
+  // Finish By Adding A Vignette Overlay, Don't Need An Attribute For This
+  const img = await canvas.loadImage(`${dir.input}/vignette.png`);
+  ctx.drawImage(img,0,0,imageSize.width,imageSize.height);
 
   /* End of layers code */
 
