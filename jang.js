@@ -3,11 +3,11 @@ import canvas from 'canvas';
 import imagemin from 'imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 
+// Basic Parameters
 const projectName = 'Just Another NFT Drop';
 const projectDescription = 'If you go to your grave without painting your masterpiece, it will not get painted - Gordon MacKenzie';
 const projectURL = 'https://jamesbachini.com/';
 const supply = 10000; // Number of NFT's to generate
-
 const imageSize = {
   width: 512,
   height: 512,
@@ -18,18 +18,13 @@ const dir = {
   output: `./output`,
 }
 
-const main = async () => {
-  for (var n = 0; n < supply; n++) {
-    await drawImage(n);
-  }
-};
-
-const drawImage= async (n) => {
+const drawImage= async (nftID) => {
   const blankCanvas = canvas.createCanvas(imageSize.width, imageSize.height);
   const ctx = blankCanvas.getContext("2d");
   ctx.attributes = [];
 
   /* Add layers using various methods here */
+
   // Backgrounds
   const bkgs = ['Background1','Background2','Background3','Background4'];
   const bkg = bkgs[Math.floor(Math.random()*bkgs.length)];
@@ -45,28 +40,28 @@ const drawImage= async (n) => {
   if (character === 'James') eyes = 'Blue';
   await addLayer('Eyes', eyes, ctx);
   // Add Some Text
-  ctx.font = "20px Nunito";
-  ctx.fillText(`${projectName} #${n} ${character}`, 20, 460);
+  ctx.font = "20px Nunito"; // Nunito is the font, change this or download it from Google Fonts
+  ctx.fillText(`${projectName} #${nftID} ${character}`, 20, 460);
 
   /* End of layers code */
 
   // save metadata
-  fs.writeFileSync(`${dir.output}/metadata/${n+1}.json`,
+  fs.writeFileSync(`${dir.output}/metadata/${nftID}.json`,
     JSON.stringify({
-      name: `${projectName} #${n}`,
+      name: `${projectName} #${nftID}`,
       description: projectDescription,
-      image: `${projectURL}images/${n}.png`,
-      external_url: `${projectURL}nfts.html?id=${n}`,
+      image: `${projectURL}images/${nftID}.png`,
+      external_url: `${projectURL}nfts.html?id=${nftID}`,
       attributes: ctx.attributes,
     }, null, 2), (err) =>  { if (err) throw err });
 
   // save image 
-  fs.writeFileSync(`${dir.output}/hdimages/${n+1}.png`, blankCanvas.toBuffer('image/png'));
-  const files = await imagemin([`${dir.output}/hdimages/${n+1}.png`], {
+  fs.writeFileSync(`${dir.output}/hdimages/${nftID}.png`, blankCanvas.toBuffer('image/png'));
+  const files = await imagemin([`${dir.output}/hdimages/${nftID}.png`], {
     destination: `${dir.output}/images/`,
     plugins: [imageminPngquant({quality: [0.5, 0.6]})]
   });
-  console.log(`Progress: ${n+1}/${supply}`);
+  console.log(`Progress: ${nftID}/${supply}`);
 }
 
 const addLayer = async (traitType,val,ctx) => {
@@ -82,7 +77,11 @@ const recreateOutputsDir = () => {
   fs.mkdirSync(`${dir.output}/hdimages`);
 };
 
-(() => {
+const main = async () => {
   recreateOutputsDir();
-  main();
-})();
+  for (var n = 1; n <= supply; n++) {
+    await drawImage(n);
+  }
+};
+
+(() => main())();

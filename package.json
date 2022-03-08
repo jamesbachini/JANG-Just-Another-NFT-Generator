@@ -1,0 +1,29 @@
+{
+  "name": "jang-just-another-nft-generator",
+  "version": "1.0.2",
+  "description": "A script to create artwork for NFT collections",
+  "main": "jang.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://jamesbachini.com/JANG-Just-Another-NFT-Generator/"
+  },
+  "keywords": [
+    "NFT",
+    "artwork",
+    "generator",
+    "10000",
+    "images",
+    "layers",
+    "jang"
+  ],
+  "author": "James Bachini",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "canvas": "^2.9.0",
+    "fs": "0.0.1-security",
+    "imagemin": "^8.0.1"
+  }
+}
