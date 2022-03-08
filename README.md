@@ -61,6 +61,20 @@ if (attr === 'Punk') arr.splice(3,1); // removes Punk at array index 3 (starts a
 await addLayer('AvatarType', attr, ctx);
 ```
 
+Specific traits for specific ID's
+```javascript
+const arr = ['Happy','Sad'];
+const mouth = arr[Math.floor(Math.random()*arr.length)];
+if (nftID.includes(420)) mouth = 'Smoking'; 
+await addLayer('Eyes', mouth, ctx);
+```
+
+Add Numeric Attributes With No Image Layers
+```javascript
+const strength = Math.floor(Math.random()*99);
+ctx.attributes.push({ 'trait_type': 'Strength', 'value': strength });
+```
+
 Feel free to add more examples above this line via a pull request.
 
 ## Compression

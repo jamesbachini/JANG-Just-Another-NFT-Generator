@@ -2,6 +2,7 @@
   "name": "jang-just-another-nft-generator",
   "version": "1.0.2",
   "description": "A script to create artwork for NFT collections",
+  "type": "module",
   "main": "jang.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

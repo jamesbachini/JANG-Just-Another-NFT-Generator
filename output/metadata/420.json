@@ -1,0 +1,28 @@
+{
+  "name": "Just Another NFT Drop #420",
+  "description": "If you go to your grave without painting your masterpiece, it will not get painted - Gordon MacKenzie",
+  "image": "https://jamesbachini.com/images/420.png",
+  "external_url": "https://jamesbachini.com/nfts.html?id=420",
+  "attributes": [
+    {
+      "trait_type": "Backgrounds",
+      "value": "Background1"
+    },
+    {
+      "trait_type": "Characters",
+      "value": "Jack"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Green"
+    },
+    {
+      "trait_type": "Mouths",
+      "value": "Smoking"
+    },
+    {
+      "trait_type": "Strength",
+      "value": 41
+    }
+  ]
+}

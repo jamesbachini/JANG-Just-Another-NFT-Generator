@@ -26,7 +26,7 @@ const drawImage= async (nftID) => {
   /* Add layers using various methods here */
 
   // Backgrounds
-  const bkgs = ['Background1','Background2','Background3','Background4'];
+  const bkgs = ['Background1','Background2','Background3'];
   const bkg = bkgs[Math.floor(Math.random()*bkgs.length)];
   await addLayer('Backgrounds', bkg, ctx);
   // Characters
@@ -35,13 +35,22 @@ const drawImage= async (nftID) => {
   if (Math.random > 0.99) character = 'James';
   await addLayer('Characters', character, ctx);
   // Eyes
-  const arr = ['Green','Brown'];
-  const eyes = arr[Math.floor(Math.random()*arr.length)];
+  const eyeArray = ['Green','Brown'];
+  let eyes = eyeArray[Math.floor(Math.random()*eyeArray.length)];
   if (character === 'James') eyes = 'Blue';
   await addLayer('Eyes', eyes, ctx);
+  // Mouth
+  const mouthArray = ['Happy','Sad'];
+  let mouth = mouthArray[Math.floor(Math.random()*mouthArray.length)];
+  if (nftID.toString().includes(420)) mouth = 'Smoking'; 
+  await addLayer('Mouths', mouth, ctx);
   // Add Some Text
-  ctx.font = "20px Nunito"; // Nunito is the font, change this or download it from Google Fonts
-  ctx.fillText(`${projectName} #${nftID} ${character}`, 20, 460);
+  ctx.fillStyle = "#ffffff"; 
+  ctx.font = "20px Nunito, sans-serif"; // Nunito is the font, change this or download it from Google Fonts
+  ctx.fillText(`${projectName} #${nftID} ${character}`, 120, 460);
+  // Add Numeric Attributes With No Image Layers
+  const strength = Math.floor(Math.random()*99);
+  ctx.attributes.push({ 'trait_type': 'Strength', 'value': strength });
 
   /* End of layers code */
 
@@ -79,7 +88,7 @@ const recreateOutputsDir = () => {
 
 const main = async () => {
   recreateOutputsDir();
-  for (var n = 1; n <= supply; n++) {
+  for (var n = 418; n <= supply; n++) {
     await drawImage(n);
   }
 };
