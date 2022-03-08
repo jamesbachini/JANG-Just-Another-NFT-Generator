@@ -91,7 +91,7 @@ const recreateOutputsDir = () => {
 
 const main = async () => {
   recreateOutputsDir();
-  for (var n = 418; n <= supply; n++) {
+  for (var n = 1; n <= supply; n++) {
     await drawImage(n);
   }
 };

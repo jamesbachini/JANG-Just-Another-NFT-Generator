@@ -1,6 +1,6 @@
-# JANG | Just Another NFT Generator
+# Jang.js | Just Another NFT Generator
 
-JANG is a Javascript tool used to create custom artwork for NFT collections. There were lots of simple NFT generators that created collections based on the images in a directory but I wanted the ability to add custom logic when building up artwork layers.
+Jang.js is a Javascript tool used to create custom artwork for NFT collections. There were lots of simple NFT generators that created collections based on the images in a directory but I wanted the ability to add custom logic when building up artwork layers.
 
 ## Instructions
 
@@ -14,14 +14,14 @@ cd JANG-Just-Another-NFT-Generator/
 npm install
 ```
 
-From there you can open up jang.js in a tex editor and change the project name, description, URL etc.
+From there you can open up jang.js in a text editor and change the project name, description, URL etc.
 
 Once you have the basic settings done it's time to start creating layers. Start with a background or collection of backgrounds and then build on top of that. All the code after   /* Add layers using various methods here */ can be modified to suit your individual project.
 
-The layer is added using the following command. The first parameter should be the directory the layers are stored in i.e layers/Backgrounds, the second parameter should be the filename without the .png, this is also written to the metadata file for the NFT so name it something descriptive, the final parameter is constant and we just pass the canvas as ctx.
+The layer is added using the following command. The first parameter should be the directory the layers are stored in i.e layers/Backgrounds, the second parameter should be the filename without the .png, this is also written to the metadata file for the NFT so name it something descriptive, the final parameter is constant and we just pass a pointer to the canvas object as ctx.
 
 ```javascript
-await addLayer('Backgrounds', bkg, ctx);
+await addLayer('Backgrounds', 'Background1', ctx);
 ```
 
 ## Examples
