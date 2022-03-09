@@ -2,6 +2,8 @@
 
 Jang.js is a Javascript tool used to create custom artwork for NFT collections. There were lots of simple NFT generators that created collections based on the images in a directory but I wanted the ability to add custom logic when building up artwork layers.
 
+Blog post covering this tool here: https://jamesbachini.com/how-to-generate-artwork-for-nfts/
+
 ## Instructions
 
 You'll need Node.js installed from https://nodejs.org
@@ -61,6 +63,15 @@ if (attr === 'Punk') arr.splice(3,1); // removes Punk at array index 3 (starts a
 await addLayer('AvatarType', attr, ctx);
 ```
 
+Super rare one offs better method
+```javascript
+const arr = ['Human','Ape','Mutant','Punk','Loogie'];
+const attr = arr[Math.floor(Math.random()*arr.length)];
+const alienID = Math.floor(Math.random() * 10000);
+if (nftID === alienID) attr = 'Alien';
+await addLayer('AvatarType', attr, ctx);
+```
+
 Specific traits for specific ID's
 ```javascript
 const arr = ['Happy','Sad'];
@@ -75,7 +86,7 @@ const strength = Math.floor(Math.random()*99);
 ctx.attributes.push({ 'trait_type': 'Strength', 'value': strength });
 ```
 
-Add a image layer or filter but no attribute
+Add an image layer or filter but no attribute
 ```javascript
 const img = await canvas.loadImage(`${dir.input}/vignette.png`);
 ctx.drawImage(img,0,0,imageSize.width,imageSize.height);
