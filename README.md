@@ -76,7 +76,7 @@ Specific traits for specific ID's
 ```javascript
 const arr = ['Happy','Sad'];
 const mouth = arr[Math.floor(Math.random()*arr.length)];
-if (nftID.includes(420)) mouth = 'Smoking'; 
+if (nftID.toString().includes(420)) mouth = 'Smoking'; 
 await addLayer('Eyes', mouth, ctx);
 ```
 
