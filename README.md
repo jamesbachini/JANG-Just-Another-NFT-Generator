@@ -38,10 +38,10 @@ await addLayer('Backgrounds', bkg, ctx);
 Generating playing cards from nftID (can be used in the smart contract too)
 ```javascript
 // Numbers
-const cardNumber = n % 13 + 1;
+const cardNumber = nftID % 13 + 1;
 await addLayer('Numbers', cardNumber, attributes, ctx);
 // Suits
-const suitRef = n % 4;
+const suitRef = nftID % 4;
 const arr = ['Spades','Hearts','Diamonds','Clubs'];
 const suit = arr[suitRef];
 await addLayer('Suits', suit, attributes, ctx);
@@ -50,8 +50,8 @@ await addLayer('Suits', suit, attributes, ctx);
 Custom rarity with some randomness
 ```javascript
 const character = 'Jack';
-if (Math.random > 0.7) character = 'Jill';
-if (Math.random > 0.99) character = 'James';
+if (Math.random() > 0.7) character = 'Jill';
+if (Math.random() > 0.99) character = 'James';
 await addLayer('Characters', character, ctx);
 ```
 

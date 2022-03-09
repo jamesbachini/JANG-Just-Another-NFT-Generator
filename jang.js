@@ -23,7 +23,7 @@ const drawImage= async (nftID) => {
   const ctx = blankCanvas.getContext("2d");
   ctx.attributes = [];
 
-  /* Add layers using various methods here */
+  /* Add layers using addLayer(dir,file,ctx) function below */
 
   // Backgrounds
   const bkgs = ['Background1','Background2','Background3'];
