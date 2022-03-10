@@ -49,7 +49,7 @@ await addLayer('Suits', suit, attributes, ctx);
 
 Custom rarity with some randomness
 ```javascript
-const character = 'Jack';
+let character = 'Jack';
 if (Math.random() > 0.7) character = 'Jill';
 if (Math.random() > 0.99) character = 'James';
 await addLayer('Characters', character, ctx);
@@ -66,7 +66,7 @@ await addLayer('AvatarType', attr, ctx);
 Super rare one offs better method
 ```javascript
 const arr = ['Human','Ape','Mutant','Punk','Loogie'];
-const attr = arr[Math.floor(Math.random()*arr.length)];
+let attr = arr[Math.floor(Math.random()*arr.length)];
 const alienID = Math.floor(Math.random() * 10000);
 if (nftID === alienID) attr = 'Alien';
 await addLayer('AvatarType', attr, ctx);
@@ -75,7 +75,7 @@ await addLayer('AvatarType', attr, ctx);
 Specific traits for specific ID's
 ```javascript
 const arr = ['Happy','Sad'];
-const mouth = arr[Math.floor(Math.random()*arr.length)];
+let mouth = arr[Math.floor(Math.random()*arr.length)];
 if (nftID.toString().includes(420)) mouth = 'Smoking'; 
 await addLayer('Eyes', mouth, ctx);
 ```
