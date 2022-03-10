@@ -6,8 +6,8 @@ import imageminPngquant from 'imagemin-pngquant';
 // Basic Parameters
 const projectName = 'Just Another NFT Drop';
 const projectDescription = 'If you go to your grave without painting your masterpiece, it will not get painted - Gordon MacKenzie';
-const projectURL = 'https://jamesbachini.com/';
 const supply = 10000; // Number of NFT's to generate
+const imageURL = `https://jamesbachini.com/images/${nftID}.png`, // IPFS URL
 const imageSize = {
   width: 512,
   height: 512,
@@ -62,8 +62,8 @@ const drawImage= async (nftID) => {
     JSON.stringify({
       name: `${projectName} #${nftID}`,
       description: projectDescription,
-      image: `${projectURL}images/${nftID}.png`,
-      external_url: `${projectURL}nfts.html?id=${nftID}`,
+      image: imageURL,
+      //external_url: projectURL,
       attributes: ctx.attributes,
     }, null, 2), (err) =>  { if (err) throw err });
 
