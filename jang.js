@@ -25,25 +25,28 @@ const drawImage= async (nftID) => {
 
   /* Add layers using addLayer(dir,file,ctx) function below */
 
+    const layers = []
+
   // Backgrounds
   const bkgs = ['Background1','Background2','Background3'];
   const bkg = bkgs[Math.floor(Math.random()*bkgs.length)];
-  await addLayer('Backgrounds', bkg, ctx);
+  layers.push(addLayer('Backgrounds', bkg, ctx));
   // Characters
   const character = 'Jack';
   if (Math.random > 0.7) character = 'Jill';
   if (Math.random > 0.99) character = 'James';
-  await addLayer('Characters', character, ctx);
+  layers.push(addLayer('Characters', character, ctx));
   // Eyes
   const eyeArray = ['Green','Brown'];
   let eyes = eyeArray[Math.floor(Math.random()*eyeArray.length)];
   if (character === 'James') eyes = 'Blue';
-  await addLayer('Eyes', eyes, ctx);
+  layers.push(addLayer('Eyes', eyes, ctx));
   // Mouth
   const mouthArray = ['Happy','Sad'];
   let mouth = mouthArray[Math.floor(Math.random()*mouthArray.length)];
   if (nftID.toString().includes(420)) mouth = 'Smoking'; 
-  await addLayer('Mouths', mouth, ctx);
+  layers.push(addLayer('Mouths', mouth, ctx));
+  await Promise.all(layers)
   // Add Some Text
   ctx.fillStyle = "#ffffff"; 
   ctx.font = "20px Nunito, sans-serif"; // Nunito is the font, change this or download it from Google Fonts
@@ -73,7 +76,6 @@ const drawImage= async (nftID) => {
     destination: `${dir.output}/images/`,
     plugins: [imageminPngquant({quality: [0.5, 0.6]})]
   });
-  console.log(`Progress: ${nftID}/${supply}`);
 }
 
 const addLayer = async (traitType,val,ctx) => {
@@ -89,10 +91,23 @@ const recreateOutputsDir = () => {
   fs.mkdirSync(`${dir.output}/hdimages`);
 };
 
+async function* batch(total, size = 100) {
+  const arr = new Array(total).fill(0)
+  let i = 0
+  while(arr.length) {
+    await Promise.all(arr.slice(0,size).map((_,idx) => {
+      drawImage(i*size+idx+1)
+    }))
+    arr.splice(0,size)
+    i++
+    yield [total - arr.length, total]
+  }
+}
+
 const main = async () => {
   recreateOutputsDir();
-  for (var n = 1; n <= supply; n++) {
-    await drawImage(n);
+  for await (let [progress, total] of batch(supply)) {
+    console.log(`Progress: ${progress}/${total}`)
   }
 };
 
